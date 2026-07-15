@@ -1,4 +1,4 @@
-// Configurações do Canvas para Fogos de Artifício
+// Configuração inicial do Canvas para as animações de Fogos de Artifício
 const canvas = document.getElementById('fireworks-canvas');
 const ctx = canvas.getContext('2d');
 
@@ -11,7 +11,7 @@ resizeCanvas();
 
 let particles = [];
 
-// Estrutura de cada partícula de fogo
+// Classe que define as propriedades físicas das partículas de fumaça e faíscas
 class Particle {
     constructor(x, y, color) {
         this.x = x;
@@ -43,14 +43,14 @@ class Particle {
     }
 }
 
-// Função para lançar uma explosão em coordenadas específicas
+// Cria uma explosão circular em coordenadas específicas
 function createFireworkExplosion(x, y) {
     const colors = ['#d69e2e', '#f6ad55', '#14829d', '#e53e3e', '#38a169', '#ffffff', '#e2e8f0'];
     const colorPalette = [
         colors[Math.floor(Math.random() * colors.length)],
         colors[Math.floor(Math.random() * colors.length)]
     ];
-    const particleCount = 60; // Quantidade de partículas por explosão
+    const particleCount = 60; // Número de fagulhas por explosão
     
     for (let i = 0; i < particleCount; i++) {
         const particleColor = colorPalette[i % colorPalette.length];
@@ -58,7 +58,7 @@ function createFireworkExplosion(x, y) {
     }
 }
 
-// Função de animação contínua do Canvas
+// Loop contínuo que desenha as animações na tela
 function animateCanvas() {
     requestAnimationFrame(animateCanvas);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -73,12 +73,11 @@ function animateCanvas() {
 }
 animateCanvas();
 
-// Lança múltiplos fogos aleatórios na área superior da tela
+// Sequência que gera 6 disparos de fogos consecutivos na tela
 function triggerCelebrationSequence() {
     const width = window.innerWidth;
     const height = window.innerHeight;
     
-    // Lança 6 explosões com pequenos intervalos de tempo
     for (let i = 0; i < 6; i++) {
         setTimeout(() => {
             const randomX = Math.random() * (width * 0.8) + (width * 0.1);
@@ -88,22 +87,46 @@ function triggerCelebrationSequence() {
     }
 }
 
-// Vinculando o clique físico do botão aos fogos
+// Configura o evento de clique do botão Comemorar
 const celebrateBtn = document.getElementById('btn-celebrate');
 celebrateBtn.addEventListener('click', (e) => {
     e.preventDefault();
     triggerCelebrationSequence();
 });
 
-// Vinculando o envio do formulário de inscrição
+// Configura o envio do formulário de inscrição
 const registerForm = document.getElementById('register-form');
 registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
     triggerCelebrationSequence();
     
-    // Alerta após a execução da animação
     setTimeout(() => {
         alert("Inscrição confirmada com sucesso! Prepare seu diário de detetive! 🔍🎒");
         registerForm.reset();
     }, 500);
+});
+
+// --- LÓGICA DO ALTERNADOR DE TEMA (LIGHT / DARK MODE) ---
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+
+// Verifica se o usuário já escolheu uma preferência antes
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    themeToggleBtn.textContent = "🌙 Modo Escuro";
+} else {
+    // Escuro por padrão
+    themeToggleBtn.textContent = "☀️ Modo Claro";
+}
+
+themeToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    
+    if (document.body.classList.contains('light-theme')) {
+        themeToggleBtn.textContent = "🌙 Modo Escuro";
+        localStorage.setItem('theme', 'light');
+    } else {
+        themeToggleBtn.textContent = "☀️ Modo Claro";
+        localStorage.setItem('theme', 'dark');
+    }
 });
