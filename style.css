@@ -92,18 +92,20 @@ header::before {
     opacity: 0.3;
 }
 
-/* Detetive Ilustrado no Header */
+/* Substituto para a estilização da imagem do detetive no header */
 .header-detective-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-.detective-svg {
-    width: 90px;
-    height: 90px;
-    color: var(--secondary-light);
-    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.3));
+.detective-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--secondary);
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.4);
     animation: float 4s ease-in-out infinite;
 }
 
