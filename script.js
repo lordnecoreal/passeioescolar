@@ -94,6 +94,18 @@ celebrateBtn.addEventListener('click', (e) => {
     triggerCelebrationSequence();
 });
 
+// --- CONTROLE DO MODAL DE INSCRIÇÃO CUSTOMIZADO ---
+const customModal = document.getElementById('custom-modal');
+const closeModalBtn = document.getElementById('close-modal-btn');
+
+function showSuccessModal() {
+    customModal.classList.add('active');
+}
+
+closeModalBtn.addEventListener('click', () => {
+    customModal.classList.remove('active');
+});
+
 // Configura o envio do formulário de inscrição
 const registerForm = document.getElementById('register-form');
 registerForm.addEventListener('submit', (e) => {
@@ -101,12 +113,12 @@ registerForm.addEventListener('submit', (e) => {
     triggerCelebrationSequence();
     
     setTimeout(() => {
-        alert("Inscrição confirmada com sucesso! Prepare seu diário de detetive! 🔍🎒");
+        showSuccessModal();
         registerForm.reset();
     }, 500);
 });
 
-// --- LÓGICA DO ALTERNADOR DE TEMA (LIGHT / DARK MODE) ---
+// --- LÓGICA DO ALTERNADOR DE TEMA (LIGHT / DARK MODE - COMPLETO) ---
 const themeToggleBtn = document.getElementById('theme-toggle-btn');
 
 // Verifica se o usuário já escolheu uma preferência antes
@@ -129,4 +141,32 @@ themeToggleBtn.addEventListener('click', () => {
         themeToggleBtn.textContent = "☀️ Modo Claro";
         localStorage.setItem('theme', 'dark');
     }
+});
+
+// --- MÁSCARA DINÂMICA DO WHATSAPP ---
+// Aplica a máscara (21) 9-9999-9999 limitando a 9 dígitos mais o DDD.
+const wppInput = document.getElementById('wpp-input');
+
+wppInput.addEventListener('input', (e) => {
+    let inputVal = e.target.value.replace(/\D/g, ""); // Remove tudo que não for número
+    
+    if (inputVal.length > 11) {
+        inputVal = inputVal.substring(0, 11); // Limita o tamanho máximo a 11 números (2 de DDD + 9 de celular)
+    }
+
+    let formattedVal = "";
+    if (inputVal.length > 0) {
+        formattedVal += "(" + inputVal.substring(0, 2);
+    }
+    if (inputVal.length > 2) {
+        formattedVal += ") " + inputVal.substring(2, 3);
+    }
+    if (inputVal.length > 3) {
+        formattedVal += "-" + inputVal.substring(3, 7);
+    }
+    if (inputVal.length > 7) {
+        formattedVal += "-" + inputVal.substring(7, 11);
+    }
+    
+    e.target.value = formattedVal;
 });

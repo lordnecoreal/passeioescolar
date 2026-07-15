@@ -10,10 +10,38 @@
 
     <canvas id="fireworks-canvas"></canvas>
 
+    <div id="custom-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span class="modal-icon">🎉</span>
+                <h2>Inscrição finalizada</h2>
+            </div>
+            <div class="modal-body">
+                <p>Inscrição confirmada com sucesso! Prepare seu diário de detetive! 🔍🎒</p>
+            </div>
+            <div class="modal-footer">
+                <button id="close-modal-btn" class="btn-modal-close">Entendido! 👍</button>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="theme-switch-container">
             <button id="theme-toggle-btn" class="btn-theme" title="Alternar Tema">☀️ Modo Claro</button>
         </div>
+        
+        <div class="header-detective-container">
+            <svg class="detective-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20,45 C20,30 35,20 50,20 C65,20 80,30 80,45 L85,45 C88,45 88,50 85,50 L15,50 C12,50 12,45 15,45 Z" fill="currentColor"/>
+                <rect x="30" y="40" width="40" height="7" fill="var(--secondary)" />
+                <circle cx="65" cy="65" r="15" stroke="var(--secondary)" stroke-width="6" fill="none" />
+                <line x1="75" y1="75" x2="90" y2="90" stroke="var(--secondary)" stroke-width="6" stroke-linecap="round" />
+                <path d="M35,60 C35,60 40,65 50,65 C60,65 65,60 65,60" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="none" />
+                <circle cx="42" cy="58" r="4" fill="currentColor" />
+                <circle cx="58" cy="58" r="4" fill="currentColor" />
+            </svg>
+        </div>
+
         <div class="hero-badge">✨ Evento 100% Grátis ✨</div>
         <h1>Aventura no Castelo da Ciência!</h1>
         <p>Um circuito interativo e lúdico de exploração e história no campus histórico da Fiocruz.</p>
@@ -65,7 +93,7 @@
                 </div>
             </div>
 
-            <div class="info-panel highlight-panel" style="border-left-color: var(--primary);">
+            <div class="info-panel highlight-panel">
                 <h3>🎒 Diretrizes da Jornada</h3>
                 <div class="info-item">
                     <div class="info-item-label">Público-Alvo</div>
@@ -87,7 +115,7 @@
             <p class="register-subtitle">Deixe o contato de seu responsável abaixo para receber o passaporte da viagem em primeira mão!</p>
             <form class="register-form" id="register-form">
                 <input type="text" class="form-input" placeholder="Nome do jovem detetive" required>
-                <input type="tel" class="form-input" placeholder="WhatsApp do Responsável" required>
+                <input type="tel" id="wpp-input" class="form-input" placeholder="WhatsApp (DDD) 9-9999-9999" maxlength="16" required>
                 <button type="submit" class="btn-submit">Garantir Passaporte 🎫</button>
             </form>
         </section>
