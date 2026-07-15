@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura no Castelo da Ciência - Fiocruz 2026</title>
+    <!-- Importação do arquivo de estilos externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Canvas para os Fogos de Artifício (fixo e cobrindo toda a tela) -->
+    <canvas id="fireworks-canvas"></canvas>
+
+    <!-- Header Hero -->
+    <header>
+        <div class="hero-badge">✨ Evento 100% Grátis ✨</div>
+        <h1>Aventura no Castelo da Ciência!</h1>
+        <p>Um circuito interativo e lúdico de exploração e história no campus histórico da Fiocruz.</p>
+        <button class="btn-fireworks" id="btn-celebrate">Comemorar com Fogos! 🎆</button>
+    </header>
+
+    <div class="container">
+        
+        <!-- Missões -->
+        <h2 class="section-title">As Missões Científicas</h2>
+        <div class="missions-grid">
+            <div class="mission-card">
+                <span class="mission-icon">🔍</span>
+                <h3>Caça aos Símbolos</h3>
+                <p>Decifre padrões e segredos escondidos na majestosa fachada do Castelo Mourisco.</p>
+            </div>
+            <div class="mission-card">
+                <span class="mission-icon">🎨</span>
+                <h3>Cores do Passado</h3>
+                <p>Observe e recrie os lindos azulejos portugueses em seu caderno de detetive.</p>
+            </div>
+            <div class="mission-card">
+                <span class="mission-icon">🌿</span>
+                <h3>Detetives da Natureza</h3>
+                <p>Explore a rica biodiversidade e as espécies de plantas no Jardim Histórico.</p>
+            </div>
+            <div class="mission-card">
+                <span class="mission-icon">⏰</span>
+                <h3>O Enigma do Tempo</h3>
+                <p>Descubra as relíquias do relógio solar e os primeiros passos dos grandes cientistas.</p>
+            </div>
+        </div>
+
+        <!-- Grid de Informações / Viagem -->
+        <div class="travel-info-grid">
+            <!-- Travel Panel -->
+            <div class="info-panel">
+                <h3>🚌 Guia de Viagem</h3>
+                <div class="info-item">
+                    <div class="info-item-label">Data e Horário</div>
+                    <div class="info-item-value">20 de Julho de 2026 das 13:00 às 16:00</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-item-label">Transporte Extensivo</div>
+                    <div class="info-item-value">Ônibus ida e volta gratuito</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-item-label">Ponto de Embarque</div>
+                    <div class="info-item-value">Estação de Metrô São Conrado (Próximo à Igreja Universal)</div>
+                </div>
+            </div>
+
+            <!-- Project Panel -->
+            <div class="info-panel" style="border-left-color: var(--primary);">
+                <h3>🎒 Diretrizes da Jornada</h3>
+                <div class="info-item">
+                    <div class="info-item-label">Público-Alvo</div>
+                    <div class="info-item-value">Crianças e jovens de 8 a 14 anos</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-item-label">Financiamento & Parceria</div>
+                    <div class="info-item-value">Realizado com apoio da Prefeitura do Rio e Escolas Municipais</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-item-label">Abordagem Pedagógica</div>
+                    <div class="info-item-value">Foco exclusivo em história, arquitetura e biodiversidade (sem vacinas/medicamentos)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulário Interativo -->
+        <div class="register-section">
+            <h2 style="color: var(--primary);">Quer se juntar à aventura?</h2>
+            <p>Deixe o contato de seu responsável abaixo para receber o passaporte da viagem em primeira mão!</p>
+            <form class="register-form" id="register-form">
+                <input type="text" class="form-input" placeholder="Nome do jovem detetive" required>
+                <input type="tel" class="form-input" placeholder="WhatsApp do Responsável" required>
+                <button type="submit" class="btn-submit">Garantir Passaporte 🎫</button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Mais Informações via WhatsApp: <strong>(21) 98711-1198</strong></p>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #718096;">* Visita guiada cultural focada na história, patrimônio e preservação ambiental.</p>
+    </footer>
+
+    <!-- Importação do script JS externo -->
+    <script src="script.js"></script>
+</body>
+</html>

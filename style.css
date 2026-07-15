@@ -1,0 +1,300 @@
+:root {
+    --primary: #0b5a6f;
+    --primary-light: #14829d;
+    --secondary: #d69e2e;
+    --secondary-light: #f6ad55;
+    --background: #f4f7f6;
+    --card-bg: #ffffff;
+    --text: #2d3748;
+    --accent: #e53e3e;
+    --success: #38a169;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Canvas para os Fogos de Artifício (fixo e cobrindo toda a tela) */
+#fireworks-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite clicar através dele */
+    z-index: 9999;
+}
+
+/* Header / Hero Section */
+header {
+    background: linear-gradient(135deg, var(--primary) 0%, #053643 100%);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 6px solid var(--secondary);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10.01%);
+    background-size: 20px 20px;
+    opacity: 0.3;
+}
+
+.hero-badge {
+    background-color: var(--secondary);
+    color: #000;
+    padding: 6px 16px;
+    font-weight: bold;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: -0.5px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+.btn-fireworks {
+    background-color: var(--secondary);
+    color: #1a202c;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(214, 158, 46, 0.4);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 10000; /* Acima do canvas */
+}
+
+.btn-fireworks:hover {
+    background-color: var(--secondary-light);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(214, 158, 46, 0.6);
+}
+
+/* Container Principal */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Seção de Missões */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary);
+    margin: 10px auto 0 auto;
+    border-radius: 2px;
+}
+
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.mission-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--primary);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.mission-card:hover {
+    transform: translateY(-8px);
+}
+
+.mission-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.mission-card h3 {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.mission-card p {
+    font-size: 0.95rem;
+    color: #4a5568;
+}
+
+/* Grid de Informações / Viagem */
+.travel-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.info-panel {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-left: 6px solid var(--secondary);
+}
+
+.info-panel h3 {
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-item {
+    margin-bottom: 15px;
+}
+
+.info-item-label {
+    font-size: 0.85rem;
+    color: #718096;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.info-item-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Formulário de Inscrição Interativo */
+.register-section {
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 60px;
+}
+
+.register-form {
+    max-width: 500px;
+    margin: 25px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid #cbd5e0;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    border-color: var(--primary);
+}
+
+.btn-submit {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 10000;
+}
+
+.btn-submit:hover {
+    background-color: var(--primary-light);
+}
+
+/* Rodapé */
+footer {
+    background-color: #1a202c;
+    color: #a0aec0;
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer strong {
+    color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    .register-section {
+        padding: 25px;
+    }
+}
